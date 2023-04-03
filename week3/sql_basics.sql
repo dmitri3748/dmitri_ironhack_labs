@@ -161,9 +161,32 @@ ORDER BY freq DESC;
 # Query 15
 # Using the loan table, print the top 10 account_ids based on the sum of all of their loan amounts.
 
+# sum of loan amount
+
+SELECT *
+FROM loan;
+
+SELECT account_id, SUM(amount) as total
+FROM loan
+GROUP BY account_id
+ORDER BY total DESC
+LIMIT 10;
 
 
+# Query 16
+# In the loan table, retrieve the number of loans issued for each day, before (excl) 930907, ordered by date in descending order.
+# group by date, count loans
+SELECT `date`, COUNT(loan_id) as loans
+FROM loan
+WHERE `date` < 930907
+GROUP BY `date`
+ORDER BY loans;
 
 
+# Query 17
+# In the loan table, for each day in December 1997, count the number of loans issued for each unique loan duration, 
+# ordered by date and duration, both in ascending order. You can ignore days without any loans in your output.
 
-
+# I guess a string op is included
+# first group is duration
+# second group is date
