@@ -135,9 +135,35 @@ ORDER BY date DESC
 LIMIT 10;
 
 # Query 13
-# In the client table, of all districts with a district_id lower than 10, 
-# how many clients are from each district_id? 
+# In the client table, of all districts with a district_id lower than 10, how many clients are from each district_id? 
 # Show the results sorted by the district_id in ascending order.
+SELECT *
+FROM `client`;
+
+
+SELECT district_id, COUNT(client_id)
+FROM `client`
+WHERE district_id < 10
+GROUP BY district_id
+ORDER BY district_id;
+
+
+# Query 14
+# In the card table, how many cards exist for each type? Rank the result starting with the most frequent type.
+SELECT *
+FROM card;
+
+SELECT `type`, COUNT(card_id) as freq
+FROM card
+GROUP BY `type`
+ORDER BY freq DESC;
+
+# Query 15
+# Using the loan table, print the top 10 account_ids based on the sum of all of their loan amounts.
+
+
+
+
 
 
 
