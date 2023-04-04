@@ -46,23 +46,5 @@ SELECT * FROM staff;
 # just 2
 
 
-
 #5.3 Return a list of employee first names only?
 SELECT first_name FROM staff;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
