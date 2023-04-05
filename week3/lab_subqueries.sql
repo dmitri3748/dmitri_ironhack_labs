@@ -43,10 +43,20 @@ SELECT first_name, last_name, email FROM customer WHERE address_id IN (
 
 # 5. Do the same with joins. Note that to create a join, 
 # you will have to identify the correct tables with their primary keys and foreign keys, that will help you get the relevant information.
-SELECT first_name, last_name, email FROM customer
+SELECT first_name, last_name, email FROM customer cu
+INNER JOIN address a ON cu.address_id = a.address_id
+	INNER JOIN city ci ON a.city_id = ci.city_id
+		INNER JOIN country co ON ci.country_id = co.country_id WHERE country = 'Canada';
 
 
+# 6. Which films are starred by the most prolific actor? 
+# Most prolific actor is defined as the actor that has acted in the most number of films.
+# 1. find the most prolific actor 
+	# count film_ids of an actor
+# 2. use that actor_id to find the different films that he/she starred.
 
+SELECT first_name, last_name, COUNT(film_id) as f FROM actor WHERE actor_id IN (
+	SELECT actor_id, film_id FROM film_actor);
 
 
 
