@@ -55,8 +55,15 @@ INNER JOIN address a ON cu.address_id = a.address_id
 	# count film_ids of an actor
 # 2. use that actor_id to find the different films that he/she starred.
 
-SELECT first_name, last_name, COUNT(film_id) as f FROM actor WHERE actor_id IN (
-	SELECT actor_id, film_id FROM film_actor);
+# SELECT first_name, last_name, COUNT(film_id) AS f FROM actor WHERE actor_id IN (
+# 	SELECT actor_id, film_id FROM film_actor);
+
+
+select title from sakila.film 
+where film_id in 
+       (select film_id from sakila.film_actor 
+                   where actor_id = 
+                                   (select actor_id from (select actor_id, count(film_id) as films_done from sakila.film_actor group by 1 order by films_done desc limit 1) as tab));
 
 
 
